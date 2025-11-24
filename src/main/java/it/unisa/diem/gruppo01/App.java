@@ -1,4 +1,4 @@
-package it.unisa.diem.gruppo23;
+package it.unisa.diem.gruppo01;
 
 /**
  * Hello world!

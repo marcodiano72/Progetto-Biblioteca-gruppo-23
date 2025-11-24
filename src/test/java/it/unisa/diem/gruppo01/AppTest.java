@@ -1,4 +1,4 @@
-package it.unisa.diem.gruppo23;
+package it.unisa.diem.gruppo01;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
