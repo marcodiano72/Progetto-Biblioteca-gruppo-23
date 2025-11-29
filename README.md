@@ -1,4 +1,4 @@
-PROGETTO: Gestione Biblioteca
+PROGETTO ING.INF.25/26: Gestione Biblioteca
 
 COMPONENTI GRUPPO: 
 
