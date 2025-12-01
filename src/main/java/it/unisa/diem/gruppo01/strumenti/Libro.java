@@ -15,12 +15,16 @@ public class Libro {
     private String titolo;
     private String autore;
     private LocalDate annoPb; //anno di pubblicazione
-    int numCopie;
+    private int numCopie; //copie disponibili
     
     
     
     public Libro(String ISBN, String titolo, String autore, LocalDate annoPb, int numCopie)
     {
+        if(numCopie<0)
+        {
+            throw new IllegalArgumentException("Il numero di copie non può essere negativo.");
+        }
         this.ISBN=ISBN;
         this.titolo=titolo;
         this.autore=autore;
@@ -48,9 +52,10 @@ public class Libro {
     {
         return annoPb;
     }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    
+    public int getNumCopie()
+    {
+        return numCopie;
     }
 
     public void setNumCopia(int numCopia) {
@@ -62,11 +67,35 @@ public class Libro {
        return this.numCopie > 0;
     }
     
+   
+    
+ 
+    public void incrementaCopie(int quantita)
+{
+     //controllo se la quantità da aggiungere è positiva
+    if (quantita > 0) {
+       
+        this.numCopie = this.numCopie + quantita;
+    } else {
+        
+        System.out.println("Attenzione: La quantità da incrementare deve essere un numero positivo.");
+    }
+}
+    
+    public boolean decrementaCopie()
+    {
+        if (this.numCopie > 0) {
+            this.numCopie--;
+            return true; // Operazione riuscita
+        }
+        return false; // Operazione fallita (libro non disponibile)
+    }
+    
     
     @Override
-    public String ToString()
+    public String toString()
     {
-       return "Codice libro:" + ISBN + ""+ "titolo:" +  titolo + "" + "autore" + autore + "" + "anno di pubblicazione" + annoPb + "" + "numero copie disponibili" + numCopie + "\n";
+        return "Libro [ISBN=" + ISBN + ", Titolo=" + titolo + ", Autore=" + autore + ", Pubblicazione=" + annoPb + ", Copie=" + numCopie + "]";
     }
     
 }
