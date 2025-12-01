@@ -116,6 +116,8 @@ public class Studente {
        sb.append("\nNome: "+ this.getNome());
        sb.append("\nCognome: "+this.getCognome());
        sb.append("\nMatricola: "+this.getMatricola());
+       sb.append("\nEmail: "+this.getEmail());
+       sb.append("\nAbilitato: "+ this.isAbilitato());
        
        return sb.toString();
    }
