@@ -28,8 +28,8 @@ public class Studente {
         this.cognome = cognome;
         this.matricola = matricola;
         this.email = email;
-        this.sanzione = sanzione;
-        this.ritardo = ritardo;
+        this.sanzione = "Nessuna"; //valore iniziale
+        this.ritardo = false;
         prestitiAttivi = new ArrayList<>();
         
         
@@ -87,13 +87,28 @@ public class Studente {
       return sanzione;
     }
     
+    // Metodo per impostare lo stato di sanzione
+    public void setSanzione(String sanzione){
+        this.sanzione = sanzione;
+    }
+    
+    
     public boolean isRitardo(){
         return ritardo;
     }
     
-  
+    // Metodo per impostare lo stato di ritardo (se necessario esternamente)
+    public void setRitardo(boolean ritardo){
+        this.ritardo = ritardo;
+    }
+    
+  /*
+      Controlla se lo studente è abilitato:
+      1. Non deve superare il limite di prestiti (3).
+      2. Non deve essere in uno stato di sanzione per ritardo (ritardo == true).
+   */
     public boolean isAbilitato(){
-        if( this.contaPrestitiAttivi() < 3 && !(this.isRitardo())) {
+        if( this.contaPrestitiAttivi() < Prestito.LIMITE_PRESTITI && !(this.isRitardo())) {
             
             return true;
             
@@ -117,7 +132,9 @@ public class Studente {
        sb.append("\nCognome: "+this.getCognome());
        sb.append("\nMatricola: "+this.getMatricola());
        sb.append("\nEmail: "+this.getEmail());
-       sb.append("\nAbilitato: "+ this.isAbilitato());
+       sb.append("\nPrestiti Attivi: "+ this.contaPrestitiAttivi());
+       sb.append("\nStato Sanzione: "+ this.getSanzione());
+       sb.append("\nAbilitato al Prestito: "+ this.isAbilitato());
        
        return sb.toString();
    }

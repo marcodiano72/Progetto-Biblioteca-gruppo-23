@@ -17,6 +17,8 @@ public class Prestito {
     // Costante per la durata base del prestito (50 giorni come da specifica)
     public static final int DURATA_PRESTITO_BASE_GIORNI = 50;
     
+    public static final int LIMITE_PRESTITI = 3; //limite per la sanzioni
+
     private Libro libro;
     private Studente studente;
     private LocalDate dataInizio;
@@ -126,19 +128,27 @@ public class Prestito {
             return "NON APPLICABILE (Prestito Attivo)";
         }
 
-        int giorniRitardo = this.calcolaGiorniRitardo();
+       int giorniRitardo = this.calcolaGiorniRitardo();
+        int prestitiAttivi = this.getStudente().contaPrestitiAttivi();
 
         if (giorniRitardo <= 0) {
             return "Nessun ritardo riscontrato.";
-        } else if (giorniRitardo >= 1 && giorniRitardo <= 10) {
-            return "Categoria 1 (" + giorniRitardo + " gg di ritardo). Sanzione lieve: negazione prestito di altri libri fino a restituzione.";
-        } else if (giorniRitardo > 10 && giorniRitardo <= 20) {
-            return "Categoria 2 (" + giorniRitardo + " gg di ritardo). Sanzione: blocco 30 giorni post-restituzione.";
-        } else { // giorniRitardo > 20
-            return "Categoria 3 (" + giorniRitardo + " gg di ritardo). Sanzione: blocco PERMANENTE.";
         }
         
+        if (prestitiAttivi <= LIMITE_PRESTITI) {
+             return "Ritardo di " + giorniRitardo + " giorni, ma NESSUNA SANZIONE APPLICATA (limite prestiti non superato).";
+        }
+
+        // SANZIONI SOLO SE C'È RITARDO E SI SUPERA IL LIMITE DI PRESTITI
+        if (giorniRitardo >= 1 && giorniRitardo <= 10) {
+            return "Categoria 1 (" + giorniRitardo + " gg di ritardo). SANZIONE: Blocco lieve , negazione prestiti fino a restituzione - LIMITE SUPERATO.";
+        } else if (giorniRitardo > 10 && giorniRitardo <= 20) {
+            return "Categoria 2 (" + giorniRitardo + " gg di ritardo). SANZIONE: blocco 30 giorni post-restituzione - LIMITE SUPERATO.";
+        } else { // giorniRitardo > 20
+            return "Categoria 3 (" + giorniRitardo + " gg di ritardo). SANZIONE: blocco PERMANENTE - LIMITE SUPERATO.";
+        }
     }
+      
     
     
     @Override
@@ -146,10 +156,8 @@ public class Prestito {
         
         
         StringBuffer sb = new StringBuffer();
-        
-        sb.append("--- Dettagli Prestito ---\n");
+         sb.append("--- Dettagli Prestito ---\n");
        
-        
         // Dati di Riferimento
         sb.append("Libro: ").append(this.getLibro().toString()).append("\n"); 
         sb.append("STATO: ").append(this.isPrestitoAttivo() ? "ATTIVO" : "CONCLUSO").append("\n");
@@ -167,8 +175,9 @@ public class Prestito {
             sb.append("Giorni di Ritardo: ").append(ritardo > 0 ? ritardo + " giorni" : "Nessun ritardo").append("\n");
         }
         
-        sb.append("\n--- Esito Sanzione ---\n");
+        sb.append("\n\n--- Esito Sanzione ---\n");
         // Utilizza il metodo di supporto per descrivere la sanzione senza applicarla
+        sb.append("Prestiti Attivi dello Studente (incluso questo): ").append(this.getStudente().contaPrestitiAttivi()).append(" (Limite: ").append(LIMITE_PRESTITI).append(")\n");
         sb.append("Regola Sanzione Applicabile: ").append(this.gestioneSanzioni()).append("\n");
         
         sb.append("-------------------------\n");
