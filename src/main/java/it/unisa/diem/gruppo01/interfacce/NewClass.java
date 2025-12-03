@@ -10,5 +10,5 @@ package it.unisa.diem.gruppo01.interfacce;
  * @author Marco Diano'
  */
 public class NewClass {
-    
+    fwb
 }
