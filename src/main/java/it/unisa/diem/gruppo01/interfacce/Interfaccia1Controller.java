@@ -8,7 +8,12 @@ package it.unisa.diem.gruppo01.interfacce;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -17,6 +22,13 @@ import javafx.fxml.Initializable;
  */
 public class Interfaccia1Controller implements Initializable {
 
+    @FXML
+    private Button accessButton;
+    @FXML
+    private PasswordField passwordFile;
+    @FXML
+    private TextField usernameField;
+
     /**
      * Initializes the controller class.
      */
@@ -24,5 +36,9 @@ public class Interfaccia1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void openMenu(ActionEvent event) {
+    }
     
 }
