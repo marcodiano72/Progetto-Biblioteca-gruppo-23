@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="447.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="TOP_CENTER" layoutX="244.0" layoutY="158.0" prefHeight="50.0" prefWidth="312.0" text="Dettagli Studente" AnchorPane.topAnchor="158.0">
+      <Label alignment="TOP_CENTER" layoutX="157.0" layoutY="36.0" prefHeight="50.0" prefWidth="312.0" text="Dettagli Studente" AnchorPane.topAnchor="36.0">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="158.0" layoutY="202.0" prefHeight="253.0" prefWidth="484.0" style="-fx-padding: 4; -fx-border-radius: 5;">
+      <HBox alignment="CENTER" layoutX="71.0" layoutY="110.0" prefHeight="253.0" prefWidth="484.0" style="-fx-padding: 4; -fx-border-radius: 5;">
          <children>
             <VBox alignment="CENTER_RIGHT">
                <children>
-                  <Label alignment="CENTER_RIGHT" text="Nome: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="141.0" text="Nome: ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
-                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="87.0" text="Cognome: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="135.0" text="Cognome: ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
-                  <Label alignment="CENTER_RIGHT" text="Email: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="129.0" text="Email: ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
-                  <Label prefHeight="23.0" prefWidth="78.0" text="Matricola: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="158.0" text="Matricola: " textAlignment="RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                   <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
-                  <Label text="Numero prestiti attivi: ">
+                  <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="190.0" text="Numero prestiti attivi: ">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="239.0" prefWidth="24.0" />
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="24.0" />
             <VBox alignment="CENTER_RIGHT" prefHeight="241.0">
                <children>
                   <TextField prefHeight="5.0" prefWidth="197.0" />
-                  <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                  <Separator opacity="0.0" prefHeight="25.0" prefWidth="198.0" />
                   <TextField />
                   <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
                   <TextField />
@@ -64,7 +68,7 @@
             <Separator opacity="0.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="29.0" />
          </children>
       </HBox>
-      <Button layoutX="365.0" layoutY="455.0" mnemonicParsing="false" onAction="#chiudiFinestra" text="Chiudi">
+      <Button layoutX="277.0" layoutY="374.0" mnemonicParsing="false" onAction="#chiudiFinestra" text="Chiudi">
          <font>
             <Font size="17.0" />
          </font>
