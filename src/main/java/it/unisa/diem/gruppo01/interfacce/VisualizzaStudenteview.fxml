@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="244.0" layoutY="158.0" prefHeight="50.0" prefWidth="312.0" text="Dettagli Studente" AnchorPane.topAnchor="158.0">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="158.0" layoutY="202.0" prefHeight="253.0" prefWidth="484.0" style="-fx-padding: 4; -fx-border-radius: 5;">
+         <children>
+            <VBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label alignment="CENTER_RIGHT" text="Nome: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                  <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="87.0" text="Cognome: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                  <Label alignment="CENTER_RIGHT" text="Email: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                  <Label prefHeight="23.0" prefWidth="78.0" text="Matricola: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                  <Label text="Numero prestiti attivi: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="239.0" prefWidth="24.0" />
+            <VBox alignment="CENTER_RIGHT" prefHeight="241.0">
+               <children>
+                  <TextField prefHeight="5.0" prefWidth="197.0" />
+                  <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                  <TextField />
+                  <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                  <TextField />
+                  <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                  <TextField />
+                  <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                  <TextField />
+               </children>
+            </VBox>
+            <Separator opacity="0.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="29.0" />
+         </children>
+      </HBox>
+      <Button layoutX="365.0" layoutY="455.0" mnemonicParsing="false" onAction="#chiudiFinestra" text="Chiudi">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
