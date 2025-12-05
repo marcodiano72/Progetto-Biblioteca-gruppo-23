@@ -19,7 +19,7 @@ import javafx.scene.image.ImageView;
  *
  * @author Utente
  */
-public class GestioneLibri_viewController implements Initializable {
+public class GestioneLibriController implements Initializable {
 
     @FXML
     private Button addLButton;

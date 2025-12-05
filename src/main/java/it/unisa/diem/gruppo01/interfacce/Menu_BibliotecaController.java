@@ -1,3 +1,5 @@
+package it.unisa.diem.gruppo01.interfacce;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,9 +16,9 @@ import javafx.scene.control.Button;
 /**
  * FXML Controller class
  *
- * @author nicolaazzato
+ * @author Marco Diano'
  */
-public class InterfacciaMenu_viewController implements Initializable {
+public class Menu_BibliotecaController implements Initializable {
 
     @FXML
     private Button gestioneLButton;

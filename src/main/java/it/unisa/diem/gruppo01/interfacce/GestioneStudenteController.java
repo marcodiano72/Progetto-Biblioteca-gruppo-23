@@ -18,7 +18,7 @@ import javafx.scene.control.TextField;
  *
  * @author Utente
  */
-public class GestioneStudente_viewController implements Initializable {
+public class GestioneStudenteController implements Initializable {
 
     @FXML
     private Button addSButton;
