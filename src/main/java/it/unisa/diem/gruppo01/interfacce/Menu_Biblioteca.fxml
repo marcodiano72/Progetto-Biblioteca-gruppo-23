@@ -21,7 +21,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Gestione%20libri.png" />
+                        <Image url="@../../../../../../resources/images/%20libri.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Gestione%20studenti.png.jpg" />
+                        <Image url="@../../../../../../resources/images/studenti.png.jpg" />
                      </image>
                   </ImageView>
                </graphic>
@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Gestione%20prestiti.png" />
+                        <Image url="@../../../../../../resources/images/prestiti.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -69,7 +69,7 @@
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Exit.png" />
+                        <Image url="@../../../../../../resources/images/Exit.png" />
                      </image>
                   </ImageView>
                </graphic>
