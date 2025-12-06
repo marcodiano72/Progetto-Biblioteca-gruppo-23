@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="294.0" layoutY="69.0" prefHeight="50.0" prefWidth="312.0" text="Dettagli Studente">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+
+      <!-- Contenitore verticale: sopra dati studente, sotto tabella prestiti -->
+      <VBox layoutX="40.0" layoutY="100.0" prefHeight="426.0" prefWidth="819.0" spacing="10.0">
+         <children>
+
+            <!-- Sezione dati studente -->
+            <HBox alignment="CENTER_LEFT" prefHeight="266.0" prefWidth="819.0" style="-fx-padding: 4; -fx-border-radius: 5;">
+               <children>
+                  <VBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="141.0" text="Nome: ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="135.0" text="Cognome: ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="129.0" text="Email: ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Separator opacity="0.0" prefHeight="20.0" prefWidth="200.0" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="158.0" text="Matricola: ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="239.0" prefWidth="24.0" />
+                  <VBox alignment="CENTER_RIGHT" prefHeight="246.0" prefWidth="198.0">
+                     <children>
+                        <TextField fx:id="nomeField" prefHeight="5.0" prefWidth="197.0" />
+                        <Separator opacity="0.0" prefHeight="25.0" prefWidth="198.0" />
+                        <TextField fx:id="cognomeField" />
+                        <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                        <TextField fx:id="emailField" />
+                        <Separator opacity="0.0" prefHeight="19.0" prefWidth="197.0" />
+                        <TextField fx:id="matricolaField" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+
+            <!-- Tabella prestiti sotto, a tutta larghezza -->
+            <GridPane alignment="CENTER" hgap="10.0" vgap="5.0">
+               <children>
+                  <!-- Titolo centrato che occupa 4 colonne -->
+                  <Label alignment="CENTER" text="Dettaglio prestiti attivi" GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.halignment="CENTER" GridPane.rowIndex="0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+
+                  <!-- Intestazioni centrata in ogni colonna -->
+                  <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="214.0" text="Libro" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" text="Data di inizio prestito" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" text="Data di fine prestito" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+
+                  <!-- Prestito 1 -->
+                  <Label text="Prestito1" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="libro1Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="inizio1Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="fine1Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+
+                  <!-- Prestito 2 -->
+                  <Label text="Prestito2" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="libro2Label" prefHeight="17.0" prefWidth="148.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="inizio2Label" prefHeight="17.0" prefWidth="155.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="fine2Label" prefHeight="17.0" prefWidth="153.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+
+                  <!-- Prestito 3 -->
+                  <Label text="Prestito3" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="libro3Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="inizio3Label" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Label fx:id="fine3Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
+
+         </children>
+      </VBox>
+
+      <Button layoutX="414.0" layoutY="526.0" mnemonicParsing="false" onAction="#chiudiFinestra" text="Chiudi">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
