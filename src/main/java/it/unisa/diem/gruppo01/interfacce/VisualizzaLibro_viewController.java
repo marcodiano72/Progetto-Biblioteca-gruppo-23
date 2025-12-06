@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author macucc
  */
-public class VisualizzaLibroController implements Initializable {
+public class VisualizzaLibro_viewController implements Initializable {
 
     /**
      * Initializes the controller class.

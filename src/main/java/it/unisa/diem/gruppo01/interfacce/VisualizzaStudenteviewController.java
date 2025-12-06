@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author macucc
  */
-public class VisualizzaStudenteController implements Initializable {
+public class VisualizzaStudenteviewController implements Initializable {
 
     /**
      * Initializes the controller class.
