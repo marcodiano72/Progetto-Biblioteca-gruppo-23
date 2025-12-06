@@ -9,25 +9,42 @@ import java.util.Comparator;
  
 
 /**
- * Gestisce l'inventario dei libri, ordinandoli per titolo.
+ * Classe Elenco
+ * La classe gestisce l'elenco di tutti gli studenti registrati nel sistema.
+ * Utilizza una collezione ordinata per mantenere gli studenti
+ * organizzati in base al cognome in ordine alfabetico. 
  */
 public class Elenco {
 
    
-    private TreeSet<Studente> elencoStudenti; // TreeSet per mantenere i libri ordinati alfabeticamente per titolo.
+    private TreeSet<Studente> elencoStudenti; ///< Insieme ordinato (TreeSet) degli studenti.
 
    
-
+    
+    /**
+     * Costruttore della classe.
+     * Inizializza l'elenco degli studenti utilizzando un comparatore personalizzato.
+     */
     public Elenco() 
     {
         this.elencoStudenti = new TreeSet<>(new StudentComparator());
     }
     
+    /**
+     * Restituisce l'intera collezione degli studenti.
+     * @return Un TreeSet contenente gli oggetti Studente.
+     */
     public TreeSet<Studente> getElencoStudenti()
     {
         return elencoStudenti;
     }
     
+    /**
+     * Cerca uno studente all'interno dell'elenco tramite la matricola.
+     * Il metodo scorre la collezione.
+     * @param matricola La matricola univoca dello studente da cercare.
+     * @return L'oggetto Studente se trovato, altrimenti null.
+     */
     // Metodo  per trovare uno studente per matricola 
     private Studente cercaStudenteperMatricola(String matricola) {
         for (Studente studente : elencoStudenti) {
@@ -38,8 +55,22 @@ public class Elenco {
         return null;
     }
     
+    /**
+     * Classe comparatore interna.
+     * Stabilisce la logica di ordinamento degli studenti all'interno del TreeSet.
+     * L'ordinamento naturale è per cognome (case-insensitive),
+     * quello secondario (in caso di anomalia) è per matricola.
+     */
+    
      // Comparator per definire l'ordinamento per cognome dello Studente (alfabetico e insensibile al caso)
     public class StudentComparator implements Comparator<Studente> {
+        
+        /**
+         * Effettua il confronto tra due studenti.
+         * @param s1 Il primo studente.
+         * @param s2 Is secondo studente.
+         * @return Un intero negativo, zero o positivo se s1 è rispettivamente minore, uguale o maggiore di s2.
+         */
         @Override
         public int compare(Studente s1, Studente s2) {
             // Confronta i cognome
@@ -53,9 +84,11 @@ public class Elenco {
         }
     }
 
-    /*
-      Aggiunge un nuovo libro al catalogo. Se il libro (stesso ISBN) esiste già,
-      aggiorna il numero di copie e restituisce false.
+    /**
+     * Aggiunge un nuovo studente all'elenco.
+     * Verifica se esiste un altro studente avente la stessa matricola.
+     * @param nuovoStudente L'oggetto da aggiungere.
+     * @return true se l'inserimento è riuscito, false altrimenti.
      */
     public boolean aggiungiStudente(Studente nuovoStudente) {
         
@@ -66,23 +99,34 @@ public class Elenco {
             System.out.println("Studente con Matricola " + nuovoStudente.getMatricola() + " già presente");
             return false; 
         } else {
-            //  aggiungiamo il nuovo libro, se non esiste già.
+            //  aggiungiamo il nuovo Studente, se non esiste già.
             return elencoStudenti.add(nuovoStudente);
         }
     }
     
     
-
+/**
+ * Modifica i dati anagrafici di uno studente già presente nell'elenco.
+ * @param matricola La matricola dello studente.
+ * @param nuovoNome Il nuovo nome da assegnare.
+ * @param nuovoCognome Il nuovo cognome da assegnare.
+ * @param nuovaEmail La nuova email da assegnare.
+ * @return true se la modifica è andata a buon fine, false se lo studente non è stato trovato.
+ */
 
     // Funzione per modificare i dati dello studente
     public boolean modificaStudente(String matricola, String nuovoNome, String nuovoCognome, String nuovaEmail) {
         // Cerca lo studente con la matricola fornita
         for (Studente studente : elencoStudenti) {
             if (studente.getMatricola().equals(matricola)) {
+                
+               
                 // Se trovato, aggiorna i dati
                 studente.setNome(nuovoNome);
                 studente.setCognome(nuovoCognome);
                 studente.setEmail(nuovaEmail);
+                
+               
                 // Restituisce true se la modifica è stata effettuata
                 return true;
             }
@@ -90,6 +134,13 @@ public class Elenco {
         // Restituisce false se lo studente non è stato trovato
         return false;
     }
+    
+    /**
+     * Rimuove uno studente dall'elenco.
+     * @param matricola La matricola dello studente da eliminare.
+     * @return true se la rimozione è andata a buon fine, false se lo studente non è stato trovato.
+     */ 
+    
 
    // Funzione per cancellare uno studente
     public boolean eliminaStudente(String matricola) {
@@ -106,7 +157,11 @@ public class Elenco {
         return false;
     }
     
-
+    /**
+     * Restituisce una rappresentazione in formato stringa dell'intero elenco.
+     * @return Una stringa con l'elenco degli studenti o un messaggio, se l'elenco è vuoto.
+     * 
+     */
   
     @Override
     public String toString() {
