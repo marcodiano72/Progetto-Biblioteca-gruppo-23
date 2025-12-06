@@ -1,12 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Questo package contiene le classi relative alla gestione degli strumenti,
+ * contesto: Gestione di una biblioteca.
  */
+
 package it.unisa.diem.gruppo01.strumenti;
 import java.time.LocalDate;
 
 /**
+ * Classe Libro
+ * La classe rappresenta un'entità libro all'interno
+ * di un sistema di gestione bibliotecaria. Contiene i dettagli anagrafici del
+ * libro e le informazioni sulla sua disponibilità (numero di copie).
  *
  * @author Marco Diano'
  */

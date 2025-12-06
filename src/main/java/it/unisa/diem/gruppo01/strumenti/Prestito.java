@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Questo package contiene le classi relative alla gestione degli strumenti,
+ * contesto: Gestione di una biblioteca.
  */
 package it.unisa.diem.gruppo01.strumenti;
 
@@ -9,22 +8,35 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 /**
+ * Classe Prestito
+ * La classe gestisce i dettagli di un singolo prestito di un libro
+ * a uno studente. Contiene informazioni sul libro, lo studente e le date temporali
+ * necessarie per calcolare lo stato e le eventuali sanzioni.
  *
  * @author Marco Diano'
  */
 public class Prestito {
     
-    // Costante per la durata base del prestito (50 giorni come da specifica)
-    public static final int DURATA_PRESTITO_BASE_GIORNI = 50;
+   
+    public static final int DURATA_PRESTITO_BASE_GIORNI = 50; /// Costante per la durata base del prestito (50 giorni come da specifica)
     
-    public static final int LIMITE_PRESTITI = 3; //limite per la sanzioni
+    public static final int LIMITE_PRESTITI = 3; /// Limite massimo di prestiti attivi prima che scattino le sanzioni in caso di ritardo (3).
 
-    private Libro libro;
-    private Studente studente;
-    private LocalDate dataInizio;
-    private LocalDate dataScadenza;
-    private LocalDate dataRestituzione;
+    private Libro libro; ///< Il libro oggetto del prestito.
+    private Studente studente; ///< Lo studente che ha richiesto il prestito.
+    private LocalDate dataInizio;///< Data di inizio del prestito.
+    private LocalDate dataScadenza;///< Data di scadenza prevista per la restituzione.
+    private LocalDate dataRestituzione;///< Data effettiva di restituzione del libro (null se il prestito è attivo).
     
+    
+    /**
+     * Costruttore per creare un nuovo oggetto.
+     * @param libro Il libro preso in prestito.
+     * @param studente Lo studente che prende in prestito il libro.
+     * @param dataInizio La data in cui il prestito è iniziato.
+     * @param dataScadenza La data in cui il prestito scade.
+     * @param dataRestituzione La data in cui è stato restituito.
+     */
     public Prestito(Libro libro, Studente studente, LocalDate dataInizio, LocalDate dataScadenza, LocalDate dataRestituzione){
         
         this.libro = libro;
@@ -34,46 +46,91 @@ public class Prestito {
         this.dataRestituzione = dataRestituzione;
     }
     
+    /**
+     * Restituisce l'oggetto associato a questo prestito.
+     * @return Il libro.
+     */
     public Libro getLibro(){
         return libro;
     }
     
+    /**
+     * Restituisce l'oggetto associato a questo prestito.
+     * @return Il libro.
+     */
     public void setLibro(Libro libro){
         this.libro = libro;
     }
     
+    /**
+     * Restituisce l'oggetto associato a questo prestito.
+     * @return Lo studente.
+     */
     public Studente getStudente(){
         return studente;
     }
     
+    /**
+     * Imposta l'oggetto associato a questo prestito.
+     * @param studente Il nuovo studente.
+     */
     public void setStudente(Studente studente){
         this.studente = studente;
     }
     
+    /**
+     * Restituisce la data di inizio del prestito.
+     * @return La data di inizio.
+     */
     public LocalDate getDataInizio(){
         return dataInizio;
     }
     
+    /**
+     * Imposta la data di inizio del prestito.
+     * @param dataInizio La nuova data di inizio.
+     */
     public void setDataInizio(LocalDate dataInizio){
         this.dataInizio = dataInizio;
     }
     
+    /**
+     * Restituisce la data di scadenza del prestito.
+     * @return La data di scadenza.
+     */
     public LocalDate getDataScadenza(){
         return dataScadenza;
     }
     
+    /**
+     * Imposta la data di scadenza del prestito.
+     * @param dataScadenza La nuova data di scadenza.
+     */
     public void setDataScadenza(LocalDate dataScadenza){
         this.dataScadenza = dataScadenza;
     }
     
+    /**
+     * Restituisce la data effettiva di restituzione.
+     * @return La data di restituzione, o se il libro non è stato ancora restituito.
+     */
     public LocalDate getDataRestituzione(){
         return dataRestituzione;
     }
     
+    /**
+     * Imposta la data effettiva di restituzione.
+     * @param dataRestituzione La nuova data di restituzione.
+     */
     public void setDatarestituzione(LocalDate dataRestituzione){
         this.dataRestituzione = dataRestituzione;
     }
     
+    /**
+     * Verifica se il prestito è ancora attivo.
+     * Un prestito è attivo se dataRestituzione è null.
+     * @return true se il prestito è attivo, false altrimenti.
+     */
     public boolean isPrestitoAttivo(){
         if(this.getDataRestituzione() == null){
             return true;
@@ -82,46 +139,23 @@ public class Prestito {
         }
     }
     
+    /**
+     * Calcola il numero di giorni di ritardo nella restituzione.
+     * Il calcolo viene effettuato tra la data di scadenza e la data di restituzione.
+     * Se il risultato è negativo, significa che il libro è stato restituito in anticipo o in tempo.
+     *
+     * @return Il numero di giorni di ritardo (o 0 o negativo se non in ritardo).
+     */
     public int calcolaGiorniRitardo(){
         return (int) ChronoUnit.DAYS.between(this.getDataScadenza(), this.getDataRestituzione());  //il metodo ChronoUnit restituisce un tipo long
     }
-    
-    public void applicaSanzione(){
-       // Non applicare sanzioni se il prestito è ancora attivo.
-        if (this.dataRestituzione == null) {
-            return;
-        }
-        
-        int giorniRitardo = this.calcolaGiorniRitardo();
-        
-        if (giorniRitardo > 0) {
-            
-            System.out.println("\n*** Tentativo di applicare sanzione con " + giorniRitardo + " giorni di ritardo ***");
-            
-            if (giorniRitardo >= 1 && giorniRitardo <= 10) {
-                // (1-10) gg: negazione prestito di altri libri fino a restituzione (blocco lieve)
-                // Assumo 7 giorni di blocco dopo la restituzione come sanzione post-ritorno.
-                LocalDate dataFineSanzione = this.dataRestituzione.plusDays(7);
-                // this.studente.setDenialEndDate(dataFineSanzione); 
-                System.out.println("  -> SANZIONE: Blocco prestito per 7 giorni, fino al: " + dataFineSanzione);
-                
-            } else if (giorniRitardo > 10 && giorniRitardo <= 20) {
-                // (10-20) gg: negazione prestito per i successivi 30gg dalla data di consegna
-                LocalDate dataFineSanzione = this.dataRestituzione.plusDays(30);
-                // this.studente.setDenialEndDate(dataFineSanzione); 
-                System.out.println("  -> SANZIONE: Blocco prestito per 30 giorni, fino al: " + dataFineSanzione);
-                
-            } else if (giorniRitardo > 20) {
-                // (20-oltre) gg: negazione prestito permanente
-                // this.studente.setPermanentDenial(true); 
-                System.out.println("  -> SANZIONE: Blocco prestito PERMANENTE.");
-            }
-        }
-        // Se giorniRitardo è <= 0, nessuna sanzione viene applicata.
-    }
- 
-    
-    
+       
+    /**
+     * Determina il tipo di sanzione applicabile in base ai giorni di ritardo
+     * e al numero di prestiti attivi dello studente .
+     *
+     * @return Una stringa che descrive l'esito della sanzione applicabile.
+     */
     public String gestioneSanzioni()
     {
         if (this.dataRestituzione == null) {
@@ -151,6 +185,11 @@ public class Prestito {
       
     
     
+    /**
+     * Restituisce una appresentazione in formato stringa dell'oggetto.
+     * Include lo stato del prestito, le date temporali, l'eventuale ritardo e l'esito della sanzione applicabile.
+     * @return Una stringa contenente i dettagli completi del prestito.
+     */
     @Override
     public String toString(){
         
